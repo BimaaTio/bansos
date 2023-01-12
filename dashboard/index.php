@@ -208,8 +208,8 @@ $dataForm = query("SELECT * FROM tb_form");
         if (result.isConfirmed) {
           document.location.href = href
           Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
+            'Terhapus!',
+            'Data Berhasil Dihapus',
             'success'
           )
         }
