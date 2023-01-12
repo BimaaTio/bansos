@@ -193,6 +193,28 @@ $dataForm = query("SELECT * FROM tb_form");
         "buttons": ["copy", "csv", "excel", "pdf", "print"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
+    $(document).on('click', '#btnHapus', function(e) {
+      e.preventDefault();
+      var href = $(this).attr('href');
+      Swal.fire({
+        title: 'Yakin Mau Dihapus?',
+        text: "Kamu Tidak Dapat Mengambalikan Data yang dihapus!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya Hapus!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          document.location.href = href
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        }
+      })
+    });
   </script>
 </body>
 
