@@ -64,7 +64,7 @@
                   " data-toggle="modal" data-target="#modal-default">
                       Detail
                     </button>
-                    <a href="hapus.php?idf=<?= $d['id'] ?>" class="btn btn-danger">Hapus</a>
+                    <a href="hapus.php?idf=<?= $d['id'] ?>" id="btnHapus" class="btn btn-danger">Hapus</a>
                   </td>
                 </tr>
               <?php endforeach; ?>
