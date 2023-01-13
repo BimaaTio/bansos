@@ -10,6 +10,7 @@ $data = query("SELECT * FROM tb_adm WHERE uid = $uid ")[0];
 $jmlUser = numRows("SELECT * FROM tb_user");
 $jmlForm = numRows("SELECT * FROM tb_form");
 $dataForm = query("SELECT * FROM tb_form");
+$jmlAntri = numRows("SELECT * FROM tb_antrian");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -222,103 +223,115 @@ $dataForm = query("SELECT * FROM tb_form");
           )
         }
       })
-      // panggil
-      $('#jumlah-antrian').load('../config/get_jumlah_antrian.php');  // v
-      $('#antrian-sekarang').load('../config/get_antrian_sekarang.php'); //v
-      $('#antrian-selanjutnya').load('../config/get_antrian_selanjutnya.php'); //v
-      $('#sisa-antrian').load('../config/get_sisa_antrian.php');
+    });
+  </script>
+<!-- Responsivevoice -->
+<!-- Get API Key -> https://responsivevoice.org/ -->
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=jQZ2zcdq"></script>
 
-      // menampilkan data antrian menggunakan DataTables
-      var table = $('#tabel-antrian').DataTable({
-        "lengthChange": false,              // non-aktifkan fitur "lengthChange"
-        "searching": false,                 // non-aktifkan fitur "Search"
-        "ajax": "../config/get_antrian.php",          // url file proses tampil data dari database
-        // menampilkan data
-        "columns": [{
-            "data": "no_antrian",
-            "width": '250px',
-            "className": 'text-center'
-          },
-          {
-            "data": "status",
-            "visible": false
-          },
-          {
-            "data": null,
-            "orderable": false,
-            "searchable": false,
-            "width": '100px',
-            "className": 'text-center',
-            "render": function(data, type, row) {
-              // jika tidak ada data "status"
-              if (data["status"] === "") {
-                // sembunyikan button panggil
-                var btn = "-";
-              } 
-              // jika data "status = 0"
-              else if (data["status"] === "0") {
-                // tampilkan button panggil
-                var btn = "<button class=\"btn btn-success btn-sm rounded-circle\"><i class=\"bi-mic-fill\"></i></button>";
-              } 
-              // jika data "status = 1"
-              else if (data["status"] === "1") {
-                // tampilkan button ulangi panggilan
-                var btn = "<button class=\"btn btn-secondary btn-sm rounded-circle\"><i class=\"bi-mic-fill\"></i></button>";
-              };
-              return btn;
+<script type="text/javascript">
+  $(document).ready(function () {
+    // tampilkan informasi antrian
+    $('#jumlah-antrian').load('pages/antrian/get_jumlah_antrian.php');
+    $('#antrian-sekarang').load('pages/antrian/get_antrian_sekarang.php');
+    $('#antrian-selanjutnya').load('pages/antrian/get_antrian_selanjutnya.php');
+    $('#sisa-antrian').load('pages/antrian/get_sisa_antrian.php');
+
+    // menampilkan data antrian menggunakan DataTables
+    var table = $('#tabel-antrian').DataTable({
+      "lengthChange": false, // non-aktifkan fitur "lengthChange"
+      "searching": false, // non-aktifkan fitur "Search"
+      "ajax": "pages/antrian/get_antrian.php", // url file proses tampil data dari database
+      // menampilkan data
+      "columns": [{
+          "data": "no_antrian",
+          "width": '250px',
+          "className": 'text-center'
+        },
+        {
+          "data": "status",
+          "visible": false
+        },
+        {
+          "data": null,
+          "orderable": false,
+          "searchable": false,
+          "width": '100px',
+          "className": 'text-center',
+          "render": function (data, type, row) {
+            // jika tidak ada data "status"
+            if (data["status"] === "") {
+              // sembunyikan button panggil
+              var btn = "-";
             }
-          },
-        ],
-        "order": [
-          [0, "desc"]             // urutkan data berdasarkan "no_antrian" secara descending
-        ],
-        "iDisplayLength": 10,     // tampilkan 10 data per halaman
-      });
+            // jika data "status = 0"
+            else if (data["status"] === "0") {
+              // tampilkan button panggil
+              var btn =
+                "<button class=\"btn btn-success btn-sm rounded-circle\"><i class=\"fas fa-microphone\"></i></button>";
+            }
+            // jika data "status = 1"
+            else if (data["status"] === "1") {
+              // tampilkan button ulangi panggilan
+              var btn =
+                "<button class=\"btn btn-secondary btn-sm rounded-circle\"><i class=\"fas fa-microphone\"></i></button>";
+            };
+            return btn;
+          }
+        },
+      ],
+      "order": [
+        [0, "desc"] // urutkan data berdasarkan "no_antrian" secara descending
+      ],
+      "iDisplayLength": 10, // tampilkan 10 data per halaman
+    });
 
-      // panggilan antrian dan update data
-      $('#tabel-antrian tbody').on('click', 'button', function() {
-        // ambil data dari datatables 
-        var data = table.row($(this).parents('tr')).data();
-        // buat variabel untuk menampilkan data "id"
-        var id = data["id"];
-        // buat variabel untuk menampilkan audio bell antrian
-        var bell = document.getElementById('tingtung');
+    // panggilan antrian dan update data
+    $('#tabel-antrian tbody').on('click', 'button', function () {
+      // ambil data dari datatables 
+      var data = table.row($(this).parents('tr')).data();
+      // buat variabel untuk menampilkan data "id"
+      var id = data["id"];
+      // buat variabel untuk menampilkan audio bell antrian
+      var bell = document.getElementById('tingtung');
 
-        // mainkan suara bell antrian
-        bell.pause();
-        bell.currentTime = 0;
-        bell.play();
+      // mainkan suara bell antrian
+      bell.pause();
+      bell.currentTime = 0;
+      bell.play();
 
-        // set delay antara suara bell dengan suara nomor antrian
-        durasi_bell = bell.duration * 770;
+      // set delay antara suara bell dengan suara nomor antrian
+      durasi_bell = bell.duration * 770;
 
-        // mainkan suara nomor antrian
-        setTimeout(function() {
-          responsiveVoice.speak("Nomor Antrian, " + data["no_antrian"] + ", menuju, loket, 1", "Indonesian Male", {
+      // mainkan suara nomor antrian
+      setTimeout(function () {
+        responsiveVoice.speak("Nomor Antrian, " + data["no_antrian"] + ", menuju, loket, yang tersedia",
+          "Indonesian Male", {
             rate: 0.9,
             pitch: 1,
             volume: 1
-          }); 
-        }, durasi_bell);
+          });
+      }, durasi_bell);
 
-        // proses update data
-        $.ajax({
-          type: "POST",               // mengirim data dengan method POST
-          url: "../config/update.php",          // url file proses update data
-          data: { id: id }            // tentukan data yang dikirim
-        });
+      // proses update data
+      $.ajax({
+        type: "POST", // mengirim data dengan method POST
+        url: "pages/antrian/update.php", // url file proses update data
+        data: {
+          id: id
+        } // tentukan data yang dikirim
       });
-
-      // auto reload data antrian setiap 1 detik untuk menampilkan data secara realtime
-      setInterval(function() {
-        $('#jumlah-antrian').load('../config/get_jumlah_antrian.php').fadeIn("slow");
-        $('#antrian-sekarang').load('../config/get_antrian_sekarang.php').fadeIn("slow");
-        $('#antrian-selanjutnya').load('../config/get_antrian_selanjutnya.php').fadeIn("slow");
-        $('#sisa-antrian').load('../config/get_sisa_antrian.php').fadeIn("slow");
-        table.ajax.reload(null, false);
-      }, 1000);
     });
-  </script>
+    // auto reload data antrian setiap 1 detik untuk menampilkan data secara realtime
+    setInterval(function () {
+      $('#jumlah-antrian').load('pages/antrian/get_jumlah_antrian.php').fadeIn("slow");
+      $('#antrian-sekarang').load('pages/antrian/get_antrian_sekarang.php').fadeIn("slow");
+      $('#antrian-selanjutnya').load('pages/antrian/get_antrian_selanjutnya.php').fadeIn("slow");
+      $('#sisa-antrian').load('pages/antrian/get_sisa_antrian.php').fadeIn("slow");
+      table.ajax.reload(null, false);
+    }, 1000);
+  });
+</script>
 </body>
 
 </html>
