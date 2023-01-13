@@ -23,15 +23,15 @@
           <div class="row">
             <!-- menampilkan informasi jumlah antrian -->
             <div class="col-md-3 mb-4">
-              <div class="card border-0 shadow-sm">
+              <div class="card info-box border-0 shadow-sm">
                 <div class="card-body p-4">
-                  <div class="d-flex justify-content-start">
+                  <div class="d-flex  justify-content-start">
                     <div class="feature-icon-3 me-4">
-                      <i class="bi-people text-warning"></i>
+                      <i class="fas fa-users text-warning"></i>
                     </div>
                     <div>
-                      <p id="jumlah-antrian" class=" text-warning mb-1"></p>
-                      <p class="mb-0">Jumlah Antrian</p>
+                      <h5 id="jumlah-antrian" class=" text-warning info-box-number mb-1"></h5>
+                      <p class="mb-0 ml-2 info-box-text">Jumlah Antrian</p>
                     </div>
                   </div>
                 </div>
@@ -39,15 +39,15 @@
             </div>
             <!-- menampilkan informasi nomor antrian yang sedang dipanggil -->
             <div class="col-md-3 mb-4">
-              <div class="card border-0 shadow-sm">
+              <div class="card info-box border-0 shadow-sm">
                 <div class="card-body p-4">
                   <div class="d-flex justify-content-start">
                     <div class="feature-icon-3 me-4">
-                      <i class="bi-person-check text-success"></i>
+                      <i class="fas fa-user text-success"></i>
                     </div>
                     <div>
-                      <p id="antrian-sekarang" class="fs-3 text-success mb-1"></p>
-                      <p class="mb-0">Antrian Sekarang</p>
+                      <h5 id="antrian-sekarang" class="fs-3 text-success info-box-number mb-1"></h5>
+                      <p class="mb-0 ml-2 info-box-text">Antrian Sekarang</p>
                     </div>
                   </div>
                 </div>
@@ -55,15 +55,15 @@
             </div>
             <!-- menampilkan informasi nomor antrian yang akan dipanggil selanjutnya -->
             <div class="col-md-3 mb-4">
-              <div class="card border-0 shadow-sm">
+              <div class="card info-box border-0 shadow-sm">
                 <div class="card-body p-4">
                   <div class="d-flex justify-content-start">
                     <div class="feature-icon-3 me-4">
-                      <i class="bi-person-plus text-info"></i>
+                      <i class="fas fa-user-plus text-info"></i>
                     </div>
                     <div>
-                      <p id="antrian-selanjutnya" class="fs-3 text-info mb-1"></p>
-                      <p class="mb-0">Antrian Selanjutnya</p>
+                      <h5 id="antrian-selanjutnya" class="fs-3 text-info info-box-number mb-1"></h5>
+                      <p class="mb-0 ml-2 info-box-text">Antrian Selanjutnya</p>
                     </div>
                   </div>
                 </div>
@@ -71,15 +71,15 @@
             </div>
             <!-- menampilkan informasi jumlah antrian yang belum dipanggil -->
             <div class="col-md-3 mb-4">
-              <div class="card border-0 shadow-sm">
+              <div class="card info-box border-0 shadow-sm">
                 <div class="card-body p-4">
                   <div class="d-flex justify-content-start">
                     <div class="feature-icon-3 me-4">
-                      <i class="bi-person text-danger"></i>
+                      <i class="fas fa-user text-danger"></i>
                     </div>
                     <div>
-                      <p id="sisa-antrian" class="fs-3 text-danger mb-1"></p>
-                      <p class="mb-0">Sisa Antrian</p>
+                      <h5 id="sisa-antrian" class="h text-danger info-box-number mb-1"></h5>
+                      <p class="mb-0 ml-2 info-box-text">Sisa Antrian</p>
                     </div>
                   </div>
                 </div>
