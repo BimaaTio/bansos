@@ -60,11 +60,11 @@
                   <td><?= $d['jb'] ?></td>
                   <td><?= $d['tgl_confirm'] ?></td>
                   <td>
-                    <button type="button" class="btn btn-info
+                    <button type="button" class="btn btn-sm btn-info
                   " data-toggle="modal" data-target="#modal-default">
                       Detail
                     </button>
-                    <a href="hapus.php?idf=<?= $d['id'] ?>" id="btnHapus" class="btn btn-danger">Hapus</a>
+                    <a href="hapus.php?idf=<?= $d['id'] ?>" id="btnHapus" class="btn btn-sm mt-1 btn-danger">Hapus</a>
                   </td>
                 </tr>
               <?php endforeach; ?>
