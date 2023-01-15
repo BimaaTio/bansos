@@ -1,5 +1,5 @@
 # SISTEM MANAGEMENT BANSOS
-
+  Sistem Management Bansos adalah sebuah aplikasi berbasis website. Website ini bertujuan mempermudah orang yang akan menerima atau mengajukan bansos.
 ## TECH & TEMPLATE
  - *PHP*
  - *JavaScript*
