@@ -1,14 +1,3 @@
-<!-- Aplikasi Antrian Berbasis Web 
-**********************************************
-* Developer   : Indra Styawantoro
-* Company     : Indra Studio
-* Release     : Juni 2021
-* Update      : -
-* Website     : www.indrasatya.com
-* E-mail      : indra.setyawantoro@gmail.com
-* WhatsApp    : +62-821-8686-9898
--->
-
 <!doctype html>
 <html lang="en" class="h-100">
 
@@ -23,7 +12,7 @@
   <title>Aplikasi Antrian Berbasis Web</title>
 
   <!-- Favicon icon -->
-  <link rel="shortcut icon" href="../assets/img/magelang.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -54,7 +43,7 @@
           <div class="card border-0 shadow-sm">
             <div class="card-body text-center d-grid p-5">
               <div class="border border-success rounded-2 py-2 mb-5">
-                <h3 id="print" class="pt-4">ANTRIAN</h3>
+                <h3 class="pt-4">ANTRIAN</h3>
                 <!-- menampilkan informasi jumlah antrian -->
                 <h1 id="antrian" class="display-1 fw-bold text-success text-center lh-1 pb-2"></h1>
               </div>
@@ -74,20 +63,17 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 
-  <script type="text/javascript">
+  <script>
     $(document).ready(function() {
       // tampilkan jumlah antrian
       $('#antrian').load('get_antrian.php');
-      // jika btn antrian klik = print
-      $('#antrian').on('click', function(){
-        $('print').print();
-      });
+
       // proses insert data
       $('#insert').on('click', function() {
         $.ajax({
-          type: 'POST',                     // mengirim data dengan method POST
-          url: 'insert.php',                // url file proses insert data
-          success: function(result) {       // ketika proses insert data selesai
+          type: 'post', // mengirim data dengan method POST
+          url: 'insert.php', // url file proses insert data
+          success: function(result) { // ketika proses insert data selesai
             // jika berhasil
             if (result === 'Sukses') {
               // tampilkan jumlah antrian
