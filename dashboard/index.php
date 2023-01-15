@@ -19,7 +19,11 @@ $jmlAntri = numRows("SELECT * FROM tb_antrian");
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SIMSOS &mdash; Dashboard </title>
+  <?php if ($_GET['hal'] == '') : ?>
+    <title>SIMSOS &mdash; Dashboard </title>
+  <?php else : ?>
+    <title>SIMSOS &mdash; <?= ucwords($_GET['hal']) ?></title>
+  <?php endif; ?>
   <link rel="stylesheet" href="../assets/css/style.css">
   <!-- favicon -->
   <link rel="shortcut icon" href="../assets/img/magelang.png" type="image/x-icon">
