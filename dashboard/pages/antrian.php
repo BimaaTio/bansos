@@ -100,6 +100,9 @@
                   </thead>
                 </table>
               </div>
+              <form method="post">
+                <button type="submit" name="hapus" class="btn btn-danger">Hapus</button>
+              </form>
             </div>
           </div>
         </div>
@@ -107,3 +110,8 @@
     </div>
   </div>
 </section>
+<?php
+if (isset($_POST['hapus'])) {
+  hapus("DELETE FROM tb_antrian");
+}
+?>
