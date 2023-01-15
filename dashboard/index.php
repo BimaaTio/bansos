@@ -7,6 +7,7 @@ if (!isset($_SESSION['login'])) {
 }
 $uid = $_SESSION['uid'];
 $data = query("SELECT * FROM tb_adm WHERE uid = $uid ")[0];
+$user = query("SELECT * FROM tb_user");
 $jmlUser = numRows("SELECT * FROM tb_user");
 $jmlForm = numRows("SELECT * FROM tb_form");
 $dataForm = query("SELECT * FROM tb_form");
@@ -202,6 +203,13 @@ $jmlAntri = numRows("SELECT * FROM tb_antrian");
         "autoWidth": true,
         "buttons": ["copy", "csv", "excel", "pdf", "print"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#user').DataTable({
+        "ordering": true,
+        "responsive": true,
+        "search": true,
+        "lengthChange": true,
+        "autoWidth": false
+      })
     });
     $(document).on('click', '#btnHapus', function(e) {
       e.preventDefault();

@@ -5,6 +5,6 @@ if ($_GET['hal'] == '') {
   include 'pages/form.php';
 } elseif ($_GET['hal'] == 'antrian') {
   include 'pages/antrian.php';
-} elseif ($_GET['hal'] == 'antrian') {
-  include 'pages/antrian.php';
+} elseif ($_GET['hal'] == 'user') {
+  include 'pages/user.php';
 }

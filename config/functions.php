@@ -24,6 +24,28 @@ function query($query)
   return $rows;
 }
 
+function tambah($query)
+{
+  global $conn;
+  mysqli_query($conn, $query);
+  if (mysqli_affected_rows($conn) > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function edit($query)
+{
+  global $conn;
+  mysqli_query($conn, $query);
+  if (mysqli_affected_rows($conn) > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 function hapus($query)
 {
   global $conn;
