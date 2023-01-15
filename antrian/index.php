@@ -9,10 +9,10 @@
   <meta name="author" content="Indra Styawantoro">
 
   <!-- Title -->
-  <title>Aplikasi Antrian Berbasis Web</title>
+  <title>Pengambilan Nomor Antrian</title>
 
   <!-- Favicon icon -->
-  <link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/img/magelang.png" type="image/x-icon">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
