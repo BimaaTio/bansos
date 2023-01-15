@@ -7,4 +7,6 @@ if ($_GET['hal'] == '') {
   include 'pages/antrian.php';
 } elseif ($_GET['hal'] == 'user') {
   include 'pages/user.php';
+} elseif ($_GET['hal'] == 'admin') {
+  include 'pages/admin.php';
 }

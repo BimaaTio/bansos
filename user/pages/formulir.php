@@ -149,7 +149,7 @@
 <!-- Proses -->
 <?php
 if (isset($_POST['submit'])) {
-  if (pengajuan($_POST) > 1) {
+  if (pengajuan($_POST) > 0) {
     echo "<script>
             document.location.href = '?hal=&oke=berhasil!';
           </script>";

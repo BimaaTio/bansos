@@ -187,3 +187,54 @@ function pengajuan($data)
   mysqli_query($conn, $query);
   return mysqli_affected_rows($conn);
 }
+
+// Upload gambar
+function upGambar()
+{
+
+  $namaFile = $_FILES['gambar']['name'];
+  $ukuranFile = $_FILES['gambar']['size'];
+  $error = $_FILES['gambar']['error'];
+  $tmpName = $_FILES['gambar']['tmp_name'];
+  //Cek gambar 
+
+  if ($error === 4) {
+    echo "<script>
+                alert('Pilih gambar terlebih dahulu')
+              </script>";
+    return false;
+  }
+
+  // file type
+  $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+  $formatFile = explode('.', $namaFile);
+  $formatFile = strtolower(end($formatFile));
+
+  if (!in_array($formatFile, $ekstensiGambarValid)) {
+    echo "<script>
+                alert('Format File tidak sesuai')
+              </script>";
+    return false;
+  }
+
+  // cek size
+
+  if ($ukuranFile > 3000000) {
+    echo "<script>
+                alert('File size Max 3MB')
+              </script>";
+    return false;
+  }
+
+
+  // lolos cek
+  // generate nama gambar
+
+  $namaBaru = uniqid();
+  $namaBaru .= '.';
+  $namaBaru .= $formatFile;
+
+  move_uploaded_file($tmpName, '../assets/img/' . $namaBaru);
+
+  return $namaBaru;
+}
