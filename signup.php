@@ -37,7 +37,7 @@ require 'config/functions.php';
       <div class="col-9">
         <div class="card shadow-sm p-3">
           <div class="card-body">
-            <form>
+            <form method="post">
               <!-- 2 column grid layout with text inputs for the first and last names -->
               <div class="row mb-4">
                 <div class="col">
